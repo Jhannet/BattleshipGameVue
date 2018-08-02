@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import HelloWorld from './components/HelloWorld.vue';
+import Home from './components/Home.vue';
 import Board from './components/Board.vue';
 import Configurations from './components/Configurations.vue';
 import BoardConfiguration from './components/BoardConfiguration.vue';
@@ -13,8 +13,9 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld,
+      name: 'home',
+      component: Home,
+      // redirect: { name: 'board'},
       children: [
         {
           path: 'board',
