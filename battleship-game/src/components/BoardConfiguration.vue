@@ -1,9 +1,9 @@
 <template>
   <div class="board-configuration">
         <label>Number of rows</label>
-        <input v-model.number="rows" type="number" min='4'>
+        <input v-model.number="rows" type="number" min='4' @change="sendValues(rows, columns)">
         <label>Number of columns</label>
-        <input v-model.number="columns" type="number" min='4'>
+        <input v-model.number="columns" type="number" min='4' @change="sendValues(rows, columns)">
         <button @click="sendValues(rows, columns)">Create</button>
   </div>
 </template>
