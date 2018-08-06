@@ -4,12 +4,13 @@
         <input v-model.number="rows" type="number" min='4' @change="sendValues(rows, columns)">
         <label>Number of columns</label>
         <input v-model.number="columns" type="number" min='4' @change="sendValues(rows, columns)">
-        <button @click="sendValues(rows, columns)">Create</button>
+        <button @click="createGame(rows, columns)">Create</button>
   </div>
 </template>
 
 <script>
 import {EventBus} from '@/services/event-bus';
+import Game from '@/services/game';
 
 export default {
   name: 'boardConfiguration',
@@ -23,6 +24,17 @@ export default {
     sendValues(rows, columns) {
       EventBus.$emit('rows', rows);
       EventBus.$emit('columns', columns);
+    },
+    createGame(rows, columns) {
+      Game.createGame({rows, columns})
+      .then(game => {
+        console.log(game);
+        console.log(game.session);
+        EventBus.$emit('token', game.session);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
   }
 };
@@ -31,8 +43,8 @@ export default {
 <style scoped>
 .board-configuration {
     border: 3px solid red;
-    width: 90%;
-    height: 200px;
+    width: 300px;
+    height: 150px;
     float: left;
     padding: 20px;
 }

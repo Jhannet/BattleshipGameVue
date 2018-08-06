@@ -50,7 +50,7 @@ export default {
 .board {
     border: #42b983 solid 1px;
     width: 60%;
-    height: 100%;
+    /* height: 100%; */
     float: left;
 }
 #my-table {

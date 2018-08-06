@@ -1,7 +1,6 @@
 <template>
   <div class="configurations">
-    <!-- <router-view/> -->
-    <BoardConfiguration></BoardConfiguration>
+    <board-configuration></board-configuration>
     <token-configuration></token-configuration>
   </div>
 </template>
@@ -21,8 +20,8 @@ export default {
 
 <style scoped>
 .configurations {
-    width: 40%;
-    height: 100%;
+    width: 37%;
+    /* height: 100%; */
     float: left;
     border: 3px solid blue;
 }
