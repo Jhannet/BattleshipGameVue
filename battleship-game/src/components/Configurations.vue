@@ -21,7 +21,6 @@ export default {
 <style scoped>
 .configurations {
     width: 37%;
-    /* height: 100%; */
     float: left;
     border: 3px solid blue;
 }

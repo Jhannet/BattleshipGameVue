@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <!-- <router-view/> -->
     <board></board>
     <configurations></configurations>
   </div>
@@ -19,7 +18,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .home {
   width: 100%;

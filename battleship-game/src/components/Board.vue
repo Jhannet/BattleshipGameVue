@@ -4,6 +4,11 @@
     <div id="board-container">
       <table id='my-table'>
       </table>
+      <table id='my-table'>
+        <tr v-for="row in rows">
+          <td v-for="column in columns"></td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -50,12 +55,10 @@ export default {
 .board {
     border: #42b983 solid 1px;
     width: 60%;
-    /* height: 100%; */
     float: left;
 }
 #my-table {
   border-collapse: collapse;
-  /* background: #42b983; */
   border: 1px solid #42b983;
 }
 #my-tabl, tr, td {
