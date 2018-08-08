@@ -6,7 +6,10 @@ const URL = 'http://localhost:3000/game';
 export default {
   createGame({ rows, columns } = {}) {
     return axios.post(URL, { rows, columns })
-      .then((response) => response.data)
+      .then((response) => {
+        localStorage.setItem('playerId_1', JSON.stringify(response.data.playerId));
+        return response.data;
+      })
       .catch((error) => {
         console.log(error);
       });
