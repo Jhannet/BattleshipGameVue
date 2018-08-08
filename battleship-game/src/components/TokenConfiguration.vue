@@ -28,7 +28,7 @@ export default {
       Game.gameJoin(token)
       .then(game => {
         console.log(game);
-        EventBus.$emit('columns', game.cols);
+        EventBus.$emit('columns', game.columns);
         EventBus.$emit('rows', game.rows);
       })
     }
@@ -41,5 +41,11 @@ export default {
     border: 3px solid green;
     width: 300px;
     height: 100px;
+}
+label, button, input {
+  display: block;
+}
+input {
+  width: 100%;
 }
 </style>

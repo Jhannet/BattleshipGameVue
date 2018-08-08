@@ -18,8 +18,8 @@ export default {
   name: 'board',
   data() {
     return {
-      rows: 4,
-      columns: 4,
+      rows: 10,
+      columns: 10,
     }
   },
   mounted() {
@@ -39,11 +39,14 @@ export default {
     width: 60%;
     float: left;
 }
+#board-container {
+  margin: 10px;
+}
 #my-table {
   border-collapse: collapse;
   border: 1px solid #42b983;
 }
-#my-tabl, tr, td {
+tr, td {
   border: 1px solid #42b983;
   width: 20px;
   height: 20px;

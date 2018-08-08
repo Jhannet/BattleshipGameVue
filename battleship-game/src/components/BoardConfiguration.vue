@@ -1,9 +1,9 @@
 <template>
   <div class="board-configuration">
         <label>Number of rows</label>
-        <input v-model.number="rows" type="number" min='4' @change="sendValues(rows, columns)">
+        <input v-model.number="rows" type="number" min='10' max='30' @change="sendValues(rows, columns)">
         <label>Number of columns</label>
-        <input v-model.number="columns" type="number" min='4' @change="sendValues(rows, columns)">
+        <input v-model.number="columns" type="number" min='10' max='30' @change="sendValues(rows, columns)">
         <button @click="createGame(rows, columns)">Create</button>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
   name: 'boardConfiguration',
   data() {
     return {
-      rows: 4,
-      columns: 4,
+      rows: 10,
+      columns: 10,
     }
   },
   methods: {
@@ -26,7 +26,7 @@ export default {
       EventBus.$emit('columns', columns);
     },
     createGame(rows, columns) {
-      Game.createGame({rows, columns})
+      Game.createGame({columns, rows})
       .then(game => {
         console.log(game);
         console.log(game.session);

@@ -7,7 +7,10 @@ export default {
   createGame({ rows, columns } = {}) {
     return axios.post(URL, { rows, columns })
       .then((response) => {
-        localStorage.setItem('playerId_1', JSON.stringify(response.data.playerId));
+        const gameId = response.data.id;
+        const playerId = response.data.playerId;
+        localStorage.setItem('gameId', JSON.stringify(gameId));
+        localStorage.setItem('playerId_1', JSON.stringify(playerId));
         return response.data;
       })
       .catch((error) => {
@@ -21,7 +24,6 @@ export default {
         const playerId = response.data.playerId;
         localStorage.setItem('gameId', JSON.stringify(gameId));
         localStorage.setItem('playerId_2', JSON.stringify(playerId));
-        console.log(localStorage.getItem('playerId_2'))
         
         return axios.get(`${URL}/${gameId}/${playerId}`);
       })
