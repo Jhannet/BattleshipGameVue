@@ -3,6 +3,9 @@
     <h4>Board game {{rows}} x {{columns}}</h4>
     <div id="board-container">
       <table id='my-table'>
+        <tr v-for="row in rows" :key="row">
+          <td v-for="column in columns" :key="column"></td>
+        </tr>
       </table>
     </div>
   </div>
@@ -15,8 +18,8 @@ export default {
   name: 'board',
   data() {
     return {
-      rows: 4,
-      columns: 4,
+      rows: 10,
+      columns: 10,
     }
   },
   mounted() {
@@ -25,23 +28,7 @@ export default {
     })
     EventBus.$on('columns', (data) => {
       this.columns = data;
-      this.createTable();
     })
-    this.createTable();
-  },
-  methods: {
-      createTable(){
-        let table="<tbody>";
-        for (var i = 0; i < this.rows; i++) {
-          table+="<tr>";
-          for (var j = 0; j < this.columns; j++) {
-            table+="<td>x</td>";
-          }
-          table+="</tr>";
-        }
-        table+="</tbody>";
-        document.getElementById("my-table").innerHTML = table;
-      }
   },
 };
 </script>
@@ -50,15 +37,16 @@ export default {
 .board {
     border: #42b983 solid 1px;
     width: 60%;
-    /* height: 100%; */
     float: left;
+}
+#board-container {
+  margin: 10px;
 }
 #my-table {
   border-collapse: collapse;
-  /* background: #42b983; */
   border: 1px solid #42b983;
 }
-#my-tabl, tr, td {
+tr, td {
   border: 1px solid #42b983;
   width: 20px;
   height: 20px;
