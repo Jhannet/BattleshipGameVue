@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 .board-configuration {
-    border: 3px solid red;
+    /* border: 3px solid red; */
     width: 300px;
     height: 150px;
     float: left;
