@@ -1,15 +1,15 @@
 <template>
 	<div class="board-setup">
 		<div class="board-container">
-			<table>
+			<table id="board">
 				<tr v-for="(row, rowIndex) in rows">
 					<td v-for="(col, colIndex) in cols" :id="(rowIndex + 1)+'-'+(colIndex + 1)">
-						0
-					</td>
+						0					
+          </td>
 				</tr>
 			</table>
 		</div>
-		<div class="ship-container">
+		<div id="ship-container">
 			<div>ship1</div>
 			<div>ship2</div>
 			<div>ship3</div>
@@ -36,7 +36,8 @@ export default {
 	  	.then(board => {
 	  		this.cols = board.cols
 	  		this.rows = board.rows
-	  	})
+      }),
+    this.dragShip()
 	},
 	methods: {
 		getBoard() {
@@ -44,6 +45,16 @@ export default {
 				rows: 10,
 				cols: 15
 			})
+		},
+		dragShip() {
+      dragula([document.getElementById('ship-container'), document.getElementById('board')], {
+        copy: function (el, source) {
+          return source === document.getElementById('ship-container')
+        },
+        accepts: function (el, target) {
+          return target !== document.getElementById('ship-container')
+        }
+      });
 		}
 	}
 }
