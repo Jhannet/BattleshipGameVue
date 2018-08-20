@@ -2,27 +2,22 @@
 	<div class="board-setup">
 		<div class="board-container">
 			<table id="board">
-				<tr v-for="(row, rowIndex) in rows" v-bind:key=row>
-					<td v-for="(col, colIndex) in cols" :id="(rowIndex + 1)+'-'+(colIndex + 1)" v-bind:key=col>
-						0
-					</td>
-				</tr>
-				<tr>
-					<td :id="'78-9'+1" v-on:click="dragShip()">
-						0
+				<tr v-for="row in rows" v-bind:key=row>
+					<td v-for="col in cols" :id="row+'-'+col" v-bind:key=col>
+						
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div id="ship-container">
-			<div class="ship-2"></div>
-			<div class="ship-3"></div>
-			<div class="ship-3"></div>
-			<div class="ship-4"></div>
-			<div class="ship-5"></div>
+			<div class="ship-2" id="ship-1"></div>
+			<div class="ship-3" id="ship-2"></div>
+			<div class="ship-3" id="ship-3"></div>
+			<div class="ship-4" id="ship-4"></div>
+			<div class="ship-5" id="ship-5"></div>
 		</div>
 		<button>Rotate</button>
-		<button>Save</button>
+		<button v-on:click="saveShips()">Save</button>
 	</div>
 </template>
 <script>
@@ -50,17 +45,20 @@ export default {
       });
     },
     dragShip() {
+      const elements = [];
+      elements.push(document.getElementById("ship-container"));
       for (let i = 1; i <= this.rows; i++) {
         for (let j = 1; j <= this.cols; j++) {
           const id = i + "-" + j;
-          // console.log(id);
-          dragula(
-            [
-              document.getElementById("ship-container"),
-              document.getElementById(i+"-"+j)
-            ],
+          elements.push( document.getElementById(id));
+        }
+      }
+      dragula(
+            elements,
             {
               copy: function(el, source) {
+                console.log(el);
+                console.log(source);
                 return source === document.getElementById("ship-container");
               },
               accepts: function(el, target) {
@@ -68,22 +66,11 @@ export default {
               }
             }
           );
-        }
-      } /*
-      dragula(
-        [
-          document.getElementById("ship-container"),
-          document.getElementById(idCol)
-        ],
-        {
-          copy: function(el, source) {
-            return source === document.getElementById("ship-container");
-          },
-          accepts: function(el, target) {
-            return target !== document.getElementById("ship-container");
-          }
-        }
-			);*/
+    },
+    saveShips() {
+      const divNode = document.getElementById("ship-"+1).parentNode;
+      const id = divNode.getAttribute("id");
+      console.log(id)
     }
   }
 };
@@ -124,6 +111,13 @@ td {
   background-size: 50px 25px;
   height: 25px;
   width: 50px;
+}
+.ship-2:active {
+  /* background-image: url(../assets/boat-2.png); */
+  /* background-repeat: no-repeat; */
+  background-size: 25px 70px;
+  height: 70px;
+  width: 25px;
 }
 .ship-3 {
   background-image: url(../assets/boat-3.png);
