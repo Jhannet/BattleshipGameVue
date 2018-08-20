@@ -29,11 +29,14 @@ export default {
       Game.createGame({columns, rows})
       .then(game => {
         console.log(game);
-        console.log(game.session);
         EventBus.$emit('token', game.session);
+        this.$router.push({
+          name: 'boardSetup',
+          params: { gameId: game.id }
+        });
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
     }
   }
