@@ -93,8 +93,8 @@ export default {
 tr,
 td {
   border: 1px solid #42b983;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 }
 #ship-container {
   width: 25%;
@@ -111,13 +111,6 @@ td {
   background-size: 50px 25px;
   height: 25px;
   width: 50px;
-}
-.ship-2:active {
-  /* background-image: url(../assets/boat-2.png); */
-  /* background-repeat: no-repeat; */
-  background-size: 25px 70px;
-  height: 70px;
-  width: 25px;
 }
 .ship-3 {
   background-image: url(../assets/boat-3.png);

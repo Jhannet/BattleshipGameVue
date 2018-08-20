@@ -22,7 +22,6 @@ export default {
 .configurations {
     width: 37%;
     float: left;
-    /* border: 3px solid blue; */
     position: relative;
 }
 </style>

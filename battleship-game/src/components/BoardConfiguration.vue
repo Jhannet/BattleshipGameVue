@@ -28,7 +28,6 @@ export default {
     createGame(rows, columns) {
       Game.createGame({columns, rows})
       .then(game => {
-        console.log(game);
         EventBus.$emit('token', game.session);
         this.$router.push({
           name: 'boardSetup',
@@ -45,7 +44,6 @@ export default {
 
 <style scoped>
 .board-configuration {
-    /* border: 3px solid red; */
     width: 300px;
     height: 150px;
     float: left;

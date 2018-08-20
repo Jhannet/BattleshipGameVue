@@ -38,7 +38,6 @@ export default {
 
 <style scoped>
 .token-configuration {
-    /* border: 3px solid green; */
     width: 300px;
     height: 100px;
 }
