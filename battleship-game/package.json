@@ -29,7 +29,9 @@
       "plugin:vue/essential",
       "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "allowForLoopAfterthoughts": true
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

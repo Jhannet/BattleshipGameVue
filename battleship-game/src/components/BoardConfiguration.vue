@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {EventBus} from '@/services/event-bus';
+import { EventBus } from '@/services/event-bus';
 import Game from '@/services/game';
 
 export default {
@@ -18,7 +18,7 @@ export default {
     return {
       rows: 10,
       columns: 10,
-    }
+    };
   },
   methods: {
     sendValues(rows, columns) {
@@ -26,19 +26,19 @@ export default {
       EventBus.$emit('columns', columns);
     },
     createGame(rows, columns) {
-      Game.createGame({columns, rows})
-      .then(game => {
-        EventBus.$emit('token', game.session);
-        this.$router.push({
-          name: 'boardSetup',
-          params: { gameId: game.id }
+      Game.createGame({ columns, rows })
+        .then((game) => {
+          EventBus.$emit('token', game.session);
+          this.$router.push({
+            name: 'boardSetup',
+            params: { gameId: game.id },
+          });
+        })
+        .catch((error) => {
+          console.error(error);
         });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    }
-  }
+    },
+  },
 };
 </script>
 

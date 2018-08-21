@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import {EventBus} from '@/services/event-bus';
+import { EventBus } from '@/services/event-bus';
 
 export default {
   name: 'board',
@@ -20,15 +20,15 @@ export default {
     return {
       rows: 10,
       columns: 10,
-    }
+    };
   },
   mounted() {
     EventBus.$on('rows', (data) => {
       this.rows = data;
-    })
+    });
     EventBus.$on('columns', (data) => {
       this.columns = data;
-    })
+    });
   },
 };
 </script>

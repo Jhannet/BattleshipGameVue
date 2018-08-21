@@ -9,30 +9,31 @@
 </template>
 
 <script>
-import {EventBus} from '@/services/event-bus';
+import { EventBus } from '@/services/event-bus';
 import Game from '@/services/game';
+
 export default {
   name: 'tokenConfiguration',
-  data(){
+  data() {
     return {
-      token:"",
-    }
+      token: '',
+    };
   },
   mounted() {
     EventBus.$on('token', (data) => {
       this.token = data;
-    })
+    });
   },
   methods: {
     gameJoin(token) {
       Game.gameJoin(token)
-      .then(game => {
-        console.log(game);
-        EventBus.$emit('columns', game.columns);
-        EventBus.$emit('rows', game.rows);
-      })
-    }
-  }
+        .then((game) => {
+          console.log(game);
+          EventBus.$emit('columns', game.columns);
+          EventBus.$emit('rows', game.rows);
+        });
+    },
+  },
 };
 </script>
 

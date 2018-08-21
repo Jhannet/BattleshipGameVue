@@ -4,7 +4,7 @@
 			<table id="board">
 				<tr v-for="row in rows" v-bind:key=row>
 					<td v-for="col in cols" :id="row+'-'+col" v-bind:key=col>
-						
+
 					</td>
 				</tr>
 			</table>
@@ -21,58 +21,57 @@
 	</div>
 </template>
 <script>
-import * as dragula from "dragula";
+import * as dragula from 'dragula';
+
 export default {
-  name: "BoardSetup",
+  name: 'BoardSetup',
   data() {
     return {
       cols: 0,
-      rows: 0
+      rows: 0,
     };
   },
   mounted() {
-    this.getBoard().then(board => {
+    this.getBoard().then((board) => {
       this.cols = board.cols;
       this.rows = board.rows;
     })
-    .then(()=> {this.dragShip()})
+      .then(() => { this.dragShip(); });
   },
   methods: {
     getBoard() {
       return Promise.resolve({
         rows: 10,
-        cols: 15
+        cols: 15,
       });
     },
     dragShip() {
       const elements = [];
-      elements.push(document.getElementById("ship-container"));
+      elements.push(document.getElementById('ship-container'));
       for (let i = 1; i <= this.rows; i++) {
         for (let j = 1; j <= this.cols; j++) {
-          const id = i + "-" + j;
-          elements.push( document.getElementById(id));
+          const id = `${i}-${j}`;
+          elements.push(document.getElementById(id));
         }
       }
       dragula(
-            elements,
-            {
-              copy: function(el, source) {
-                console.log(el);
-                console.log(source);
-                return source === document.getElementById("ship-container");
-              },
-              accepts: function(el, target) {
-                return target !== document.getElementById("ship-container");
-              }
-            }
-          );
+        elements,
+        {
+          copy(el, source) {
+            return source === document.getElementById('ship-container');
+          },
+          accepts(el, target) {
+            return target !== document.getElementById('ship-container');
+          },
+        },
+      );
     },
     saveShips() {
-      const divNode = document.getElementById("ship-"+1).parentNode;
-      const id = divNode.getAttribute("id");
-      console.log(id)
-    }
-  }
+      const divNode = document.getElementById(`ship-${1}`).parentNode;
+      const id = divNode.getAttribute('id');
+      console.log(id);
+    },
+  },
 };
 </script>
 <style scoped>
