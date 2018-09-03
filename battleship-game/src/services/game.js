@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const localStorage = window.localStorage;
 
 const URL = 'http://localhost:3000/game';
@@ -24,8 +25,8 @@ export default {
         const playerId = response.data.playerId;
         localStorage.setItem('gameId', JSON.stringify(gameId));
         localStorage.setItem('playerId_2', JSON.stringify(playerId));
-        
-        return axios.get(`${URL}/${gameId}/${playerId}`);
+
+        return axios.get(`${URL}/${gameId}/player/${playerId}`);
       })
       .then(game => game.data)
       .catch((error) => {

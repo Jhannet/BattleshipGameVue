@@ -14,7 +14,7 @@ export default {
   components: {
     Board,
     Configurations,
-  }
+  },
 };
 </script>
 
